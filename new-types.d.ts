@@ -1,5 +1,5 @@
 interface Row {
-  id: number;
+  id: number | string;
   queryName: string;
   request: string;
 }

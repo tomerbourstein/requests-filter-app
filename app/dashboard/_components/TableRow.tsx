@@ -1,12 +1,22 @@
 const TableRow: React.FC<{
-  key: number;
+  id: number | string;
   queryName: string;
   request: string;
+  th?: boolean;
 }> = (props) => {
   return (
     <tr>
-      <td>{props.key}</td>
-      <td>{props.queryName}</td> <td>{props.request} </td> <td>button</td>
+      {props.th ? (
+        <>
+          <th>{props.id}</th>
+          <th>{props.queryName}</th> <th>{props.request} </th>
+        </>
+      ) : (
+        <>
+          <td>{props.id}</td>
+          <td>{props.queryName}</td> <td>{props.request} </td> <td>button</td>
+        </>
+      )}
     </tr>
   );
 };

@@ -1,7 +1,6 @@
 import { table } from "console";
 import TableRow from "./TableRow";
 
-
 const MOCK_TABLE_DATA: Row[] = [
   {
     id: 1,
@@ -39,14 +38,11 @@ const Table: React.FC = () => {
   return (
     <table id="requests-table">
       <tbody>
-        <tr>
-          <th>#</th>
-          <th>Query</th>
-          <th>Request</th> <th></th>
-        </tr>
+        <TableRow id="#" queryName="Query" request="Request" th={true} />
         {MOCK_TABLE_DATA.map((row) => (
           <TableRow
             key={row.id}
+            id={row.id}
             queryName={row.queryName}
             request={row.request}
           />
