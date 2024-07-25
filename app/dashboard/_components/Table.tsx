@@ -1,11 +1,7 @@
 import { table } from "console";
 import TableRow from "./TableRow";
 
-interface Row {
-  id: number;
-  queryName: string;
-  request: string;
-}
+
 const MOCK_TABLE_DATA: Row[] = [
   {
     id: 1,
