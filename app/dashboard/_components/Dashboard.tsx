@@ -1,6 +1,6 @@
-import Graph from "./Graph";
-import PieChart from "./PieChart";
-import Table from "./Table";
+import Graph from "./QueryGraph";
+import PieChart from "./QueryPieChart";
+import Table from "./RequestsTable";
 
 const DashboardComponent: React.FC = () => {
   return (
