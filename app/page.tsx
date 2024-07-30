@@ -1,6 +1,13 @@
+"use client";
+import { useQuery } from "convex/react";
+import { api } from "../convex/_generated/api";
+
 import Logo from "../public/ronny-logo.svg";
 
 export default function Home() {
+  const plantarrayLog = useQuery(api.utils.plantarrayLog.get);
+  console.log(plantarrayLog);
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-5 px-5 py-10">
       <header id="header" className="flex flex-row gap-5 justify-evenly w-full">
