@@ -15,6 +15,16 @@ interface ProcessedLineTitle {
   kind: string;
 }
 
+function saveProcessedDataToJSON(data: ProcessedRequest[]): void {
+  try {
+    const filePath = path.join(process.cwd(), "public","assets","files", "processed_data.json");
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.log("Processed data saved to", filePath);
+  } catch (error) {
+    console.error("Error saving processed data to JSON:", error);
+  }
+}
+
 // Function to split log file based on custom delimiter condition
 function splitLogByDelimiter(logData: string): string[] {
   const lines = logData.split("\n");
@@ -71,6 +81,7 @@ export function logManipulation(): ProcessedRequest[] {
     console.error("There has been an error: " + error);
   }
 
+  saveProcessedDataToJSON(allProcessedRequests);
   return allProcessedRequests;
 }
 
@@ -101,7 +112,7 @@ function requestManipulation(request: string, id: number): ProcessedRequest {
     const [time, kind, lineTitle] = startLine.split(" - ");
 
     const hasStartRequest = lineTitle.includes("START REQUEST: ");
-    const splitSign = hasStartRequest ? ": " : "";
+    const splitSign = hasStartRequest ? ": " : "--> ";
     const [title, content] = lineTitle.split(splitSign);
 
     const details: ProcessedLineTitle[] = [];
